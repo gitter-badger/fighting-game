@@ -6,9 +6,9 @@ function Game(numberOfPlayers) {
   var player;
 
   this.weapons = [];
-  this.weapons.push(new Weapon({name: 'Dagger', damage: 0.2, ammo: 20}));
-  this.weapons.push(new Weapon({name: 'Shotty', damage: 0.6, ammo: 1}));
-  this.weapons.push(new Weapon({name: 'Slaps', damage: 0.05, ammo: Infinity}));
+  this.weapons.push(new Weapon({name: 'Sword', damage: 0.2, ammo: Infinity}));
+  this.weapons.push(new Weapon({name: 'Shotgun', damage: 0.6, ammo: 1}));
+  this.weapons.push(new Weapon({name: 'Fist', damage: 0.05, ammo: Infinity}));
   this.players = [];
 
   for (var i = 0; i < numberOfPlayers; i++) {
@@ -55,7 +55,6 @@ Game.prototype.fight = function () {
   this.alivePlayers()
     .forEach(function (player, i, alivePlayersArray) {
       var playerIndex = alivePlayersArray.indexOf(player);
-      console.log(playerIndex);
 
       if (playerIndex !== -1) {
         var nextPlayer = alivePlayersArray[playerIndex + 1] || alivePlayersArray[0];
@@ -65,7 +64,6 @@ Game.prototype.fight = function () {
 
   return this;
 };
-
 
 Game.prototype.shufflePlayerOrder = function () {
   this.players = _.shuffle(this.players);
@@ -94,3 +92,4 @@ var game = new Game(4);
 game.fightToTheDeath();
 
 console.log(JSON.stringify(game, null, 2));
+
